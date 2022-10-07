@@ -14,7 +14,7 @@
 <!-- Added a container class. -->
 <body class="container">
     <!-- Added the topmost div for the question screen
-    with the score link and timer.
+        with the score link and timer.
     Forgot to add a class for <top>. -->
     <top class="top">
         <scores class="score" id="time">
@@ -27,7 +27,7 @@
     <!-- Added a <mid> to display as the welcome page: title and description
         of the quiz with a button below it.
     Added class elements for flex-boxing the section below, 
-    plus an id for <button> in script.js.-->
+        plus an id for <button> in script.js.-->
     <mid class="mid">
         <h1 class="title">
     
@@ -41,32 +41,39 @@
 
         </button>
         <!-- Added a <question> container tag with an <h2> 
-        for the actual question.
+            for the actual question.
         Moved <question> into <mid> since the <h1>/<p>/<button> will disappear
-        upon clicking the buttons.-->
+            upon clicking the buttons.-->
         <question class="question">
             <h2 class="prompt">
 
             </h2>
             <!-- Added an ordered list with 4 answer choices and renamed
-            <answers> to <ol class="answers">.-->
+                <answers> to <ol class="answers">.
+            Added class elements for the <li>s.-->
             <ol class="answers">
-                <li>
+                <li class="answer-1">
 
                 </li>
 
-                <li>
+                <li class="answer-2">
 
                 </li>
 
-                <li>
+                <li class="answer-3">
 
                 </li>
 
-                <li>
+                <li class="answer-4">
 
                 </li>
             </ol>
+
+            <comment class="comment">
+                <p>
+
+                </p>
+            </comment>
         </question>
     </mid>
     
