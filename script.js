@@ -31,6 +31,40 @@ let startBtn = document.createElement("button");
         page.appendChild(startBtn);
 
 // Created an event listener to hide the "title page" when you click "Start Quiz".
+// Made the button to dynamically show the next page. That's a lot of code to CTRL+C; +V.
 startBtn.addEventListener("click", function() {
     document.getElementById("page").style.display = "none";
+        let quiz1 = document.createElement("div");
+        let prompt1 = document.createElement("h2");
+        let list1 = document.createElement("ol");
+        let choice1 = document.createElement("li");
+        let choice2 = document.createElement("li");
+        let choice3 = document.createElement("li");
+        let choice4 = document.createElement("li");
+            prompt1.textContent = "Question 1.";
+            choice1.textContent = "1.";
+            choice2.textContent = "2.";
+            choice3.textContent = "3.";
+            choice4.textContent = "4.";
+            quiz1.setAttribute("style", "margin:auto; width:50%; text-align:center;");
+            prompt1.setAttribute("style", "margin:auto; width:50%; text-align:center;");
+            list1.setAttribute("style", "margin:auto; width:50%; text-align:center;");
+            choice1.setAttribute("style", "margin:auto; width:50%; text-align:center;");
+            choice2.setAttribute("style", "margin:auto; width:50%; text-align:center;");
+            choice3.setAttribute("style", "margin:auto; width:50%; text-align:center;");
+            choice4.setAttribute("style", "margin:auto; width:50%; text-align:center;");
+                quiz1.id = "quiz1";
+                prompt1.id = "prompt1";
+                list1.id = "list1";
+                choice1.id = "choice1";
+                choice2.id = "choice2";
+                choice3.id = "choice3";
+                choice4.id = "choice4";
+                body.appendChild(quiz1);
+                quiz1.appendChild(prompt1);
+                quiz1.appendChild(list1);
+                quiz1.appendChild(choice1);
+                quiz1.appendChild(choice2);
+                quiz1.appendChild(choice3);
+                quiz1.appendChild(choice4);
 });
