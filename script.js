@@ -32,15 +32,16 @@ let startBtn = document.createElement("button");
 
 // Created an event listener to hide the "title page" when you click "Start Quiz".
 // Made the button to dynamically show the next page. That's a lot of code to CTRL+C; +V.
+// Changed the choice <li>s into <button>s.
 startBtn.addEventListener("click", function() {
     document.getElementById("page").style.display = "none";
         let quiz1 = document.createElement("div");
         let prompt1 = document.createElement("h2");
         let list1 = document.createElement("ol");
-        let choice1 = document.createElement("li");
-        let choice2 = document.createElement("li");
-        let choice3 = document.createElement("li");
-        let choice4 = document.createElement("li");
+        let choice1 = document.createElement("button");
+        let choice2 = document.createElement("button");
+        let choice3 = document.createElement("button");
+        let choice4 = document.createElement("button");
             prompt1.textContent = "Question 1.";
             choice1.textContent = "1.";
             choice2.textContent = "2.";
