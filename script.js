@@ -87,35 +87,42 @@ startBtn.addEventListener("click", function() {
         "a20"
     ];
 
+    // Couldn't get setAnswers() to work.
+    answer1.textContent = answerText[0];
+    answer2.textContent = answerText[1];
+    answer3.textContent = answerText[2];
+    answer4.textContent = answerText[3];
+            
     // Added setAnswers to hopefully condense the code.
-    function setAnswers() {
-        if (question.textContent = questions[0]) {
-            answer1.textContent = "1." + answerText[0];
-            answer2.textContent = answerText[1];
-            answer3.textContent = answerText[2];
-            answer4.textContent = answerText[3];
-        } else if (question.textContent = questions[1]) {
-            answer1.textContent = answerText[4];
-            answer2.textContent = "2." + answerText[5];
-            answer3.textContent = answerText[6];
-            answer4.textContent = answerText[7];
-        } else if (question.textContent = questions[2]) {
-            answer1.textContent = answerText[8];
-            answer2.textContent = answerText[9];
-            answer3.textContent = "3." + answerText[10];
-            answer4.textContent = answerText[11];
-        } else if (question.textContent = questions[3]) {
-            answer1.textContent = answerText[12];
-            answer2.textContent = answerText[13];
-            answer3.textContent = answerText[14];
-            answer4.textContent = "4." + answerText[15];
-        } else if (question.textContent = questions[4]) {
-            answer1.textContent = answerText[16];
-            answer2.textContent = answerText[17];
-            answer3.textContent = "3." + answerText[18];
-            answer4.textContent = answerText[19];
-        }
-    }
+    // setAnswers() callbacks don't work. Dunno why.
+    // function setAnswers() {
+    //     if (question.textContent = questions[0]) {
+    //         answer1.textContent = answerText[0];
+    //         answer2.textContent = answerText[1];
+    //         answer3.textContent = answerText[2];
+    //         answer4.textContent = answerText[3];
+    //     } else if (question.textContent = questions[1]) {
+    //         answer1.textContent = answerText[4];
+    //         answer2.textContent = answerText[5];
+    //         answer3.textContent = answerText[6];
+    //         answer4.textContent = answerText[7];
+    //     } else if (question.textContent = questions[2]) {
+    //         answer1.textContent = answerText[8];
+    //         answer2.textContent = answerText[9];
+    //         answer3.textContent = answerText[10];
+    //         answer4.textContent = answerText[11];
+    //     } else if (question.textContent = questions[3]) {
+    //         answer1.textContent = answerText[12];
+    //         answer2.textContent = answerText[13];
+    //         answer3.textContent = answerText[14];
+    //         answer4.textContent = answerText[15];
+    //     } else if (question.textContent = questions[4]) {
+    //         answer1.textContent = answerText[16];
+    //         answer2.textContent = answerText[17];
+    //         answer3.textContent = answerText[18];
+    //         answer4.textContent = answerText[19];
+    //     }
+    // }
     
     quiz1.setAttribute("style", "margin:auto; width:50%; text-align:center;");
     quiz1.id = "quiz1";
@@ -146,6 +153,7 @@ startBtn.addEventListener("click", function() {
 
     // Made a bunch of callbacks using setAnswers() and quizSetup().
     // Cloned the let values to try to make the code work for the next pages.
+    // Added a bunch of answer.textContent values below. The setAnswer() callback function doesn't work.
     answer1.addEventListener("click", function() {
         document.getElementById("quiz1").style.display = "none";
         
@@ -158,7 +166,10 @@ startBtn.addEventListener("click", function() {
         let answer4 = document.createElement("button");
 
         question.textContent = questions[1];
-        setAnswers();
+        answer1.textContent = answerText[4];
+        answer2.textContent = answerText[5];
+        answer3.textContent = answerText[6];
+        answer4.textContent = answerText[7];
         
         quiz2.setAttribute("style", "margin:auto; width:50%; text-align:center;");
         quiz2.id = "quiz2";
@@ -171,91 +182,101 @@ startBtn.addEventListener("click", function() {
         quiz2.appendChild(answer2);
         quiz2.appendChild(answer3);
         quiz2.appendChild(answer4);
-    });
-        answer2.addEventListener("click", function() {
-        document.getElementById("quiz2").style.display = "none";
-        
-        let quiz3 = document.createElement("div");
-        let question = document.createElement("h2");
-        let list = document.createElement("ol");
-        let answer1 = document.createElement("button");
-        let answer2 = document.createElement("button");
-        let answer3 = document.createElement("button");
-        let answer4 = document.createElement("button");
 
-        question.textContent = questions[2];
-        setAnswers();
-
-        quiz3.setAttribute("style", "margin:auto; width:50%; text-align:center;");
-        quiz3.id = "quiz3";
-
-        quizSetup();
-        body.appendChild(quiz3);
-        quiz3.appendChild(question);
-        quiz3.appendChild(list);
-        quiz3.appendChild(answer1);
-        quiz3.appendChild(answer2);
-        quiz3.appendChild(answer3);
-        quiz3.appendChild(answer4);
-    });
-
-        answer3.addEventListener("click", function() {
-            document.getElementById("quiz3").style.display = "none";
+            answer2.addEventListener("click", function() {
+                document.getElementById("quiz2").style.display = "none";
                 
-            let quiz4 = document.createElement("div");
-            let question = document.createElement("h2");
-            let list = document.createElement("ol");
-            let answer1 = document.createElement("button");
-            let answer2 = document.createElement("button");
-            let answer3 = document.createElement("button");
-            let answer4 = document.createElement("button");
+                let quiz3 = document.createElement("div");
+                let question = document.createElement("h2");
+                let list = document.createElement("ol");
+                let answer1 = document.createElement("button");
+                let answer2 = document.createElement("button");
+                let answer3 = document.createElement("button");
+                let answer4 = document.createElement("button");
 
-            question.textContent = questions[3];
-            setAnswers();
+                question.textContent = questions[2];
+                answer1.textContent = answerText[8];
+                answer2.textContent = answerText[9];
+                answer3.textContent = answerText[10];
+                answer4.textContent = answerText[11];
 
-            quiz4.setAttribute("style", "margin:auto; width:50%; text-align:center;");
-            quiz4.id = "quiz4";
+                quiz3.setAttribute("style", "margin:auto; width:50%; text-align:center;");
+                quiz3.id = "quiz3";
 
-            quizSetup();
-            body.appendChild(quiz4);
-            quiz4.appendChild(question);
-            quiz4.appendChild(list);
-            quiz4.appendChild(answer1);
-            quiz4.appendChild(answer2);
-            quiz4.appendChild(answer3);
-            quiz4.appendChild(answer4);
-        });
+                quizSetup();
+                body.appendChild(quiz3);
+                quiz3.appendChild(question);
+                quiz3.appendChild(list);
+                quiz3.appendChild(answer1);
+                quiz3.appendChild(answer2);
+                quiz3.appendChild(answer3);
+                quiz3.appendChild(answer4);
 
-        answer4.addEventListener("click", function() {
-            document.getElementById("quiz4").style.display = "none";
+                    answer3.addEventListener("click", function() {
+                        document.getElementById("quiz3").style.display = "none";
+                            
+                        let quiz4 = document.createElement("div");
+                        let question = document.createElement("h2");
+                        let list = document.createElement("ol");
+                        let answer1 = document.createElement("button");
+                        let answer2 = document.createElement("button");
+                        let answer3 = document.createElement("button");
+                        let answer4 = document.createElement("button");
 
-            let quiz5 = document.createElement("div");
-            let question = document.createElement("h2");
-            let list = document.createElement("ol");
-            let answer1 = document.createElement("button");
-            let answer2 = document.createElement("button");
-            let answer3 = document.createElement("button");
-            let answer4 = document.createElement("button");
+                        question.textContent = questions[3];
+                        answer1.textContent = answerText[12];
+                        answer2.textContent = answerText[13];
+                        answer3.textContent = answerText[14];
+                        answer4.textContent = answerText[15];
 
-            question.textContent = questions[4];
-            setAnswers();
+                        quiz4.setAttribute("style", "margin:auto; width:50%; text-align:center;");
+                        quiz4.id = "quiz4";
 
-            quiz5.setAttribute("style", "margin:auto; width:50%; text-align:center;");
-            quiz5.id = "quiz5";
+                        quizSetup();
+                        body.appendChild(quiz4);
+                        quiz4.appendChild(question);
+                        quiz4.appendChild(list);
+                        quiz4.appendChild(answer1);
+                        quiz4.appendChild(answer2);
+                        quiz4.appendChild(answer3);
+                        quiz4.appendChild(answer4);
 
-            quizSetup();
-            body.appendChild(quiz5);
-            quiz5.appendChild(question);
-            quiz5.appendChild(list);
-            quiz5.appendChild(answer1);
-            quiz5.appendChild(answer2);
-            quiz5.appendChild(answer3);
-            quiz5.appendChild(answer4);
-        });
+                            answer4.addEventListener("click", function() {
+                                document.getElementById("quiz4").style.display = "none";
 
-            answer3.addEventListener("click", function() {
-                document.getElementById("quiz5").style.display = "none";
+                                let quiz5 = document.createElement("div");
+                                let question = document.createElement("h2");
+                                let list = document.createElement("ol");
+                                let answer1 = document.createElement("button");
+                                let answer2 = document.createElement("button");
+                                let answer3 = document.createElement("button");
+                                let answer4 = document.createElement("button");
+
+                                question.textContent = questions[4];
+                                answer1.textContent = answerText[16];
+                                answer2.textContent = answerText[17];
+                                answer3.textContent = answerText[18];
+                                answer4.textContent = answerText[19];
+
+                                quiz5.setAttribute("style", "margin:auto; width:50%; text-align:center;");
+                                quiz5.id = "quiz5";
+
+                                quizSetup();
+                                body.appendChild(quiz5);
+                                quiz5.appendChild(question);
+                                quiz5.appendChild(list);
+                                quiz5.appendChild(answer1);
+                                quiz5.appendChild(answer2);
+                                quiz5.appendChild(answer3);
+                                quiz5.appendChild(answer4);
+
+                                    answer3.addEventListener("click", function() {
+                                        document.getElementById("quiz5").style.display = "none";
+                                    });
+                            });
+                    });
             });
+    });
 });
 
 // var questions = [
