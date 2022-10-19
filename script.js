@@ -87,6 +87,7 @@ startBtn.addEventListener("click", function() {
         "a20"
     ];
 
+    // Added setAnswers to hopefully condense the code.
     function setAnswers() {
         if (question.textContent = questions[0]) {
             answer1.textContent = "1." + answerText[0];
@@ -119,6 +120,7 @@ startBtn.addEventListener("click", function() {
     quiz1.setAttribute("style", "margin:auto; width:50%; text-align:center;");
     quiz1.id = "quiz1";
 
+    // Added quizSetup for the other quiz pages.
     function quizSetup() {
         question.setAttribute("style", "margin:auto; width:50%; text-align:center;");
         list.setAttribute("style", "margin:auto; width:50%; text-align:center;");
@@ -142,6 +144,8 @@ startBtn.addEventListener("click", function() {
     quiz1.appendChild(answer3);
     quiz1.appendChild(answer4);
 
+    // Made a bunch of callbacks using setAnswers() and quizSetup().
+    // Cloned the let values to try to make the code work for the next pages.
     answer1.addEventListener("click", function() {
         document.getElementById("quiz1").style.display = "none";
         
