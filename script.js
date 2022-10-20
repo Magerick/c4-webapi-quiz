@@ -41,35 +41,15 @@ startBtn.addEventListener("click", function() {
     let time = document.createElement("div");
 
     // Added some attributes to display the timer on the page.
-    stats.setAttribute("style", "margin:auto; width:50%; text-align:center;");
-    score.setAttribute("style", "margin:auto; width:50%; text-align:left; justify-content:left; margin-right:300px;");
-    time.setAttribute("style", "margin:auto; width:50%; text-align:right; justify-content:right; margin-left:300px;");
+    stats.setAttribute("style", "display:inline-block; margin:auto; width:100%; text-align:center;");
+    score.setAttribute("style", "display:inline-block; margin:auto; width:25%; text-align:center;");
+    time.setAttribute("style", "display:inline-block; margin:auto; width:25%; text-align:center;");
     stats.id = "stats";
     score.id = "score";
     time.id = "time";
     body.appendChild(stats);
     stats.appendChild(score);
     stats.appendChild(time);
-
-    // Created a timer.
-    function countdown() {
-        var timeLeft = 60;
-
-        var timer = setInterval(function() {
-            if (timeLeft > 1) {
-                time.textContent = timeLeft + " seconds remaining";
-                timeLeft--;
-            } else if (timeLeft === 1) {
-                time.textContent = timeLeft + " second remaining";
-                timeLeft--;
-            } else {
-                time.textContent = "";
-                clearInterval(timer);
-            }
-        }, 1000);
-    }
-
-    countdown();
     
     let quiz1 = document.createElement("div");
 
@@ -123,7 +103,7 @@ startBtn.addEventListener("click", function() {
             
     // Added setAnswers to hopefully condense the code.
     // setAnswers() callbacks don't work. Dunno why.
-    // function setAnswers() { deleted.
+    // Deleted function setAnswers() {.
     
     quiz1.setAttribute("style", "margin:auto; width:50%; text-align:center;");
     quiz1.id = "quiz1";
@@ -152,11 +132,41 @@ startBtn.addEventListener("click", function() {
     quiz1.appendChild(answer3);
     quiz1.appendChild(answer4);
 
+    // Created a timer.
+    function countdown() {
+        var timeLeft = 60;
+
+        var timer = setInterval(function() {
+            if (timeLeft > 1) {
+                time.textContent = "Time: " + timeLeft;
+                timeLeft--;
+            } else if (timeLeft === 1) {
+                time.textContent = "Time: " + timeLeft;
+                timeLeft--;
+            // Added a game over screen that hides the quiz pages on timeout.
+            } else if (timeLeft === 0) {
+                time.textContent = "Game Over";
+                clearInterval(timer);
+                document.getElementById("quiz1").style.display = "none";
+                document.getElementById("quiz2").style.display = "none"; 
+                document.getElementById("quiz3").style.display = "none";
+                document.getElementById("quiz4").style.display = "none";
+                document.getElementById("quiz5").style.display = "none";
+            } else {
+                time.textContent = " ";
+                clearInterval(timer);
+            }
+        }, 1000);   
+    }
+    
+    countdown();
+
     // Made a bunch of callbacks using setAnswers() and quizSetup().
     // Cloned the let values to try to make the code work for the next pages.
     // Added a bunch of answer.textContent values below. The setAnswer() callback function doesn't work.
     answer1.addEventListener("click", function() {
         document.getElementById("quiz1").style.display = "none";
+        score.textContent = "Score: " + 1;
         
         let quiz2 = document.createElement("div");
         let question = document.createElement("h2");
@@ -186,6 +196,7 @@ startBtn.addEventListener("click", function() {
 
             answer2.addEventListener("click", function() {
                 document.getElementById("quiz2").style.display = "none";
+                score.textContent = "Score: " + 2;
                 
                 let quiz3 = document.createElement("div");
                 let question = document.createElement("h2");
@@ -215,6 +226,7 @@ startBtn.addEventListener("click", function() {
 
                     answer3.addEventListener("click", function() {
                         document.getElementById("quiz3").style.display = "none";
+                        score.textContent = "Score: " + 3;
                             
                         let quiz4 = document.createElement("div");
                         let question = document.createElement("h2");
@@ -244,6 +256,7 @@ startBtn.addEventListener("click", function() {
 
                             answer4.addEventListener("click", function() {
                                 document.getElementById("quiz4").style.display = "none";
+                                score.textContent = "Score: " + 4;
 
                                 let quiz5 = document.createElement("div");
                                 let question = document.createElement("h2");
@@ -273,39 +286,10 @@ startBtn.addEventListener("click", function() {
 
                                     answer3.addEventListener("click", function() {
                                         document.getElementById("quiz5").style.display = "none";
+                                        score.textContent = "Score: " + 5;
                                     });
                             });
                     });
             });
     });
 });
-
-// var questions = [
-//     'question1'
-// ]
-
-// var answers = [
-//     [
-//         'answer1-1'
-//     ]
-//     [
-//         'answer2-1'
-//     ]
-// ];
-
-// function getRandomQuestion() {
-
-//     var randomIndex = Math.floor() * questions.length);
-
-//     var activeQuestions = questions[randomIndex];
-//     var activeAnswers = answers[randomIndex];
-
-//     return {
-//         question: activeQuestions;
-//         answers: activeAnswers;
-//     }
-// }
-
-// function renderQuestion() {
-//     var questionData = getRandomQuestion();
-//
