@@ -7,7 +7,7 @@ let title = document.createElement("h1");
 let p1 = document.createElement("p");
 let startBtn = document.createElement("button");
 // Moved the stats/score/time into the start button event.
-// Moved them back up here and made score a button.
+// Moved them back up here and made score a <a> link.
 let stats = document.createElement("div");
 let score = document.createElement("a");
 let time = document.createElement("div");
