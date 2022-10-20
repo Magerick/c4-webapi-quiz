@@ -2,14 +2,6 @@
 // and hide the previous page with a button click (eventListener).
 // Re-indented everything.
 let body = document.body;
-// let stats = document.createElement("div");
-// let score = document.createElement("div");
-// let time = document.createElement("div");
-
-// body.appendChild(stats);
-// stats.appendChild(score);
-// stats.appendChild(time);
-
 let page = document.createElement("div");
 let title = document.createElement("h1");
 let p1 = document.createElement("p");
@@ -42,6 +34,42 @@ page.appendChild(startBtn);
 // Placed a bunch of eventListeners into the startBtn eventListener in one massive function with a question/answer array.
 startBtn.addEventListener("click", function() {
     document.getElementById("page").style.display = "none";
+
+    // Moved the stats/score/time into the start button event.
+    let stats = document.createElement("div");
+    let score = document.createElement("div");
+    let time = document.createElement("div");
+
+    // Added some attributes to display the timer on the page.
+    stats.setAttribute("style", "margin:auto; width:50%; text-align:center;");
+    score.setAttribute("style", "margin:auto; width:50%; text-align:left; justify-content:left; margin-right:300px;");
+    time.setAttribute("style", "margin:auto; width:50%; text-align:right; justify-content:right; margin-left:300px;");
+    stats.id = "stats";
+    score.id = "score";
+    time.id = "time";
+    body.appendChild(stats);
+    stats.appendChild(score);
+    stats.appendChild(time);
+
+    // Created a timer.
+    function countdown() {
+        var timeLeft = 60;
+
+        var timer = setInterval(function() {
+            if (timeLeft > 1) {
+                time.textContent = timeLeft + " seconds remaining";
+                timeLeft--;
+            } else if (timeLeft === 1) {
+                time.textContent = timeLeft + " second remaining";
+                timeLeft--;
+            } else {
+                time.textContent = "";
+                clearInterval(timer);
+            }
+        }, 1000);
+    }
+
+    countdown();
     
     let quiz1 = document.createElement("div");
 
@@ -65,26 +93,26 @@ startBtn.addEventListener("click", function() {
     question.textContent = questions[0];
 
     var answerText = [
-        "a1",
-        "a2",
-        "a3",
-        "a4",
-        "a5",
-        "a6",
-        "a7",
-        "a8",
-        "a9",
-        "a10",
-        "a11",
-        "a12",
-        "a13",
-        "a14",
-        "a15",
-        "a16",
-        "a17",
-        "a18",
-        "a19",
-        "a20"
+        "1. a1",
+        "2. a2",
+        "3. a3",
+        "4. a4",
+        "1. a5",
+        "2. a6",
+        "3. a7",
+        "4. a8",
+        "1. a9",
+        "2. a10",
+        "3. a11",
+        "4. a12",
+        "1. a13",
+        "2. a14",
+        "3. a15",
+        "4. a16",
+        "1. a17",
+        "2. a18",
+        "3. a19",
+        "4. a20"
     ];
 
     // Couldn't get setAnswers() to work.
@@ -95,34 +123,7 @@ startBtn.addEventListener("click", function() {
             
     // Added setAnswers to hopefully condense the code.
     // setAnswers() callbacks don't work. Dunno why.
-    // function setAnswers() {
-    //     if (question.textContent = questions[0]) {
-    //         answer1.textContent = answerText[0];
-    //         answer2.textContent = answerText[1];
-    //         answer3.textContent = answerText[2];
-    //         answer4.textContent = answerText[3];
-    //     } else if (question.textContent = questions[1]) {
-    //         answer1.textContent = answerText[4];
-    //         answer2.textContent = answerText[5];
-    //         answer3.textContent = answerText[6];
-    //         answer4.textContent = answerText[7];
-    //     } else if (question.textContent = questions[2]) {
-    //         answer1.textContent = answerText[8];
-    //         answer2.textContent = answerText[9];
-    //         answer3.textContent = answerText[10];
-    //         answer4.textContent = answerText[11];
-    //     } else if (question.textContent = questions[3]) {
-    //         answer1.textContent = answerText[12];
-    //         answer2.textContent = answerText[13];
-    //         answer3.textContent = answerText[14];
-    //         answer4.textContent = answerText[15];
-    //     } else if (question.textContent = questions[4]) {
-    //         answer1.textContent = answerText[16];
-    //         answer2.textContent = answerText[17];
-    //         answer3.textContent = answerText[18];
-    //         answer4.textContent = answerText[19];
-    //     }
-    // }
+    // function setAnswers() { deleted.
     
     quiz1.setAttribute("style", "margin:auto; width:50%; text-align:center;");
     quiz1.id = "quiz1";
