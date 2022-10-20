@@ -6,23 +6,43 @@ let page = document.createElement("div");
 let title = document.createElement("h1");
 let p1 = document.createElement("p");
 let startBtn = document.createElement("button");
+// Moved the stats/score/time into the start button event.
+// Moved them back up here and made score a button.
+let stats = document.createElement("div");
+let score = document.createElement("a");
+let time = document.createElement("div");
 
+// Added "View Highscores" and "Time: 60".
 title.textContent = "JavaScript Timed Quiz";
 p1.textContent = "Sample Text."
 startBtn.textContent = "Start Quiz";
+score.textContent = "View Highscores";
+time.textContent = "Time: 60";
 
 // Added basic styles to show the elements on the page.
 page.setAttribute("style", "margin:auto; width:50%; text-align:center;");
 title.setAttribute("style", "margin:auto; width:50%; text-align:center;");
 p1.setAttribute("style", "margin:auto; width:50%; text-align:center;");
 startBtn.setAttribute("style", "margin:auto; width:50%; text-align:center;");
+// Added some attributes to display the timer on the page.
+// Moved them here.
+stats.setAttribute("style", "display:inline-block; margin:auto; width:100%; text-align:center;");
+score.setAttribute("style", "display:inline-block; margin:auto; width:25%; text-align:center;");
+time.setAttribute("style", "display:inline-block; margin:auto; width:25%; text-align:center;");
 
 // Added element ids to actually access the built-in Java-DOM elements.
+// Moved the stats/score/time ids and appends here.
 page.id = "page";
 title.id = "title";
 p1.id = "p1";
 startBtn.id = "startBtn";
+stats.id = "stats";
+score.id = "score";
+time.id = "time";
 
+body.appendChild(stats);
+stats.appendChild(score);
+stats.appendChild(time);
 body.appendChild(page);
 page.appendChild(title);
 page.appendChild(p1);
@@ -35,24 +55,7 @@ page.appendChild(startBtn);
 startBtn.addEventListener("click", function() {
     document.getElementById("page").style.display = "none";
 
-    // Moved the stats/score/time into the start button event.
-    let stats = document.createElement("div");
-    let score = document.createElement("div");
-    let time = document.createElement("div");
-
-    // Added some attributes to display the timer on the page.
-    stats.setAttribute("style", "display:inline-block; margin:auto; width:100%; text-align:center;");
-    score.setAttribute("style", "display:inline-block; margin:auto; width:25%; text-align:center;");
-    time.setAttribute("style", "display:inline-block; margin:auto; width:25%; text-align:center;");
-    stats.id = "stats";
-    score.id = "score";
-    time.id = "time";
-    body.appendChild(stats);
-    stats.appendChild(score);
-    stats.appendChild(time);
-    
     let quiz1 = document.createElement("div");
-
     let question = document.createElement("h2");
     let list = document.createElement("ol");
     let answer1 = document.createElement("button");
@@ -133,6 +136,7 @@ startBtn.addEventListener("click", function() {
     quiz1.appendChild(answer4);
 
     // Created a timer.
+    // Added "Game Over" to the last else statement.
     function countdown() {
         var timeLeft = 60;
 
@@ -153,7 +157,7 @@ startBtn.addEventListener("click", function() {
                 document.getElementById("quiz4").style.display = "none";
                 document.getElementById("quiz5").style.display = "none";
             } else {
-                time.textContent = " ";
+                time.textContent = "Game Over";
                 clearInterval(timer);
             }
         }, 1000);   
@@ -166,7 +170,7 @@ startBtn.addEventListener("click", function() {
     // Added a bunch of answer.textContent values below. The setAnswer() callback function doesn't work.
     answer1.addEventListener("click", function() {
         document.getElementById("quiz1").style.display = "none";
-        score.textContent = "Score: " + 1;
+        // score.textContent = "Score: " + 1;
         
         let quiz2 = document.createElement("div");
         let question = document.createElement("h2");
@@ -196,7 +200,7 @@ startBtn.addEventListener("click", function() {
 
             answer2.addEventListener("click", function() {
                 document.getElementById("quiz2").style.display = "none";
-                score.textContent = "Score: " + 2;
+                // score.textContent = "Score: " + 2;
                 
                 let quiz3 = document.createElement("div");
                 let question = document.createElement("h2");
@@ -226,7 +230,7 @@ startBtn.addEventListener("click", function() {
 
                     answer3.addEventListener("click", function() {
                         document.getElementById("quiz3").style.display = "none";
-                        score.textContent = "Score: " + 3;
+                        // score.textContent = "Score: " + 3;
                             
                         let quiz4 = document.createElement("div");
                         let question = document.createElement("h2");
@@ -256,7 +260,7 @@ startBtn.addEventListener("click", function() {
 
                             answer4.addEventListener("click", function() {
                                 document.getElementById("quiz4").style.display = "none";
-                                score.textContent = "Score: " + 4;
+                                // score.textContent = "Score: " + 4;
 
                                 let quiz5 = document.createElement("div");
                                 let question = document.createElement("h2");
@@ -286,7 +290,7 @@ startBtn.addEventListener("click", function() {
 
                                     answer3.addEventListener("click", function() {
                                         document.getElementById("quiz5").style.display = "none";
-                                        score.textContent = "Score: " + 5;
+                                        // score.textContent = "Score: " + 5;
                                     });
                             });
                     });
