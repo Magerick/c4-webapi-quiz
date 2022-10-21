@@ -23,7 +23,7 @@ time.textContent = "Time: 60";
 page.setAttribute("style", "margin:auto; width:50%; text-align:center;");
 title.setAttribute("style", "margin:auto; width:50%; text-align:center;");
 p1.setAttribute("style", "margin:auto; width:50%; text-align:center;");
-startBtn.setAttribute("style", "margin:auto; width:50%; text-align:center;");
+startBtn.setAttribute("style", "margin:auto; width:10%; text-align:center;");
 // Added some attributes to display the timer on the page.
 // Moved them here.
 stats.setAttribute("style", "display:inline-block; margin:auto; width:100%; text-align:center;");
@@ -115,10 +115,10 @@ startBtn.addEventListener("click", function() {
     function quizSetup() {
         question.setAttribute("style", "margin:auto; width:50%; text-align:center;");
         list.setAttribute("style", "margin:auto; width:50%; text-align:center;");
-        answer1.setAttribute("style", "margin:auto; width:50%; text-align:center;");
-        answer2.setAttribute("style", "margin:auto; width:50%; text-align:center;");
-        answer3.setAttribute("style", "margin:auto; width:50%; text-align:center;");
-        answer4.setAttribute("style", "margin:auto; width:50%; text-align:center;");
+        answer1.setAttribute("style", "margin:auto; width:50%; text-align:center; column-width:auto; column-width:auto;");
+        answer2.setAttribute("style", "margin:auto; width:50%; text-align:center; column-width:auto; column-width:auto;");
+        answer3.setAttribute("style", "margin:auto; width:50%; text-align:center; column-width:auto; column-width:auto;");
+        answer4.setAttribute("style", "margin:auto; width:50%; text-align:center; column-width:auto; column-width:auto;");
         question.id = "question";
         list.id = "list";
         answer1.id = "answer1";
@@ -135,12 +135,15 @@ startBtn.addEventListener("click", function() {
     quiz1.appendChild(answer3);
     quiz1.appendChild(answer4);
 
+    // Moved var timer outside the scope of function countdown() {.
+    var timer;
+
     // Created a timer.
     // Added "Game Over" to the last else statement.
     function countdown() {
         var timeLeft = 60;
 
-        var timer = setInterval(function() {
+        timer = setInterval(function() {
             if (timeLeft > 1) {
                 time.textContent = "Time: " + timeLeft;
                 timeLeft--;
@@ -159,8 +162,8 @@ startBtn.addEventListener("click", function() {
             } else {
                 time.textContent = "Game Over";
                 clearInterval(timer);
-            }
-        }, 1000);   
+            }     
+        }, 1000); 
     }
     
     countdown();
@@ -267,31 +270,52 @@ startBtn.addEventListener("click", function() {
                                 let list = document.createElement("ol");
                                 let answer1 = document.createElement("button");
                                 let answer2 = document.createElement("button");
-                                let answer3 = document.createElement("button");
+                                // Changed answer3 here and below to answer3a to stop the timer.
+                                let answer3a = document.createElement("button");
                                 let answer4 = document.createElement("button");
 
                                 question.textContent = questions[4];
                                 answer1.textContent = answerText[16];
                                 answer2.textContent = answerText[17];
-                                answer3.textContent = answerText[18];
+                                answer3a.textContent = answerText[18];
                                 answer4.textContent = answerText[19];
 
                                 quiz5.setAttribute("style", "margin:auto; width:50%; text-align:center;");
                                 quiz5.id = "quiz5";
 
-                                quizSetup();
+                                // Removed quizSetup() to accomodate for answer3a and its children.
+                                // Made a sequel.
+                                function quizSetup2() {
+                                    question.setAttribute("style", "margin:auto; width:50%; text-align:center;");
+                                    list.setAttribute("style", "margin:auto; width:50%; text-align:center;");
+                                    answer1.setAttribute("style", "margin:auto; width:50%; text-align:center;");
+                                    answer2.setAttribute("style", "margin:auto; width:50%; text-align:center;");
+                                    answer3a.setAttribute("style", "margin:auto; width:50%; text-align:center;");
+                                    answer4.setAttribute("style", "margin:auto; width:50%; text-align:center;");
+                                    question.id = "question";
+                                    list.id = "list";
+                                    answer1.id = "answer1";
+                                    answer2.id = "answer2";
+                                    answer3a.id = "answer3a";
+                                    answer4.id = "answer4";
+                                }
+
                                 body.appendChild(quiz5);
                                 quiz5.appendChild(question);
                                 quiz5.appendChild(list);
                                 quiz5.appendChild(answer1);
                                 quiz5.appendChild(answer2);
-                                quiz5.appendChild(answer3);
+                                quiz5.appendChild(answer3a);
                                 quiz5.appendChild(answer4);
 
-                                    answer3.addEventListener("click", function() {
+                                    answer3a.addEventListener("click", function() {
                                         document.getElementById("quiz5").style.display = "none";
                                         // score.textContent = "Score: " + 5;
-                                    });
+                                        // Added the true Game Over screen which stops the timer after pressing this button.
+                                        timeLeft = 0;
+                                        time.textContent = "Game Over";
+                                        clearInterval(timer);
+                                    });      
                             });
                     });
             });
